@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Home {% endblock title %}
+
+{% block content  %}
+<div class="">
+    {% block page_title %}Upload a CSV or XLSX File For Your Analysis{% endblock page_title %}
+    <hr><br>
+    <div class="container row col-7">
+        <form class="form" action="/data" method="POST"> {% csrf_token %}
+            <h5 for="file" class="text-primary">Upload CSV File</h5><hr>
+            <input type="file" class="form-control mt-4" id="file" name="data">
+            <button class="btn btn-primary btn-blk mt-5">Submit File</button>
+        </form>
+        <!-- <img class="img-fluid" src="{% static 'assets/img/RawData.png' %}" alt=""> -->
+    </div>
+</div>
+{% endblock content %}

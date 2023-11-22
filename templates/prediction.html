@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Predict{% endblock title %}
+
+{% block content  %}
+<div class="">
+    {% block page_title %}Make Prediction{% endblock page_title %}
+    <hr><br>
+    <div class="container">
+        <div class="card">
+            <div class="card-header bg-primary">
+                <h3>Prediction</h3>
+            </div>
+            <div class="card-body">
+               <form class="form" action="" method="POST"> {% csrf_token %}
+                <input type="text" class="form-control mt-4" name="id_no" placeholder="id">
+                <input type="text" class="form-control mt-4" name="NumDots" placeholder="NumDots">
+                <input type="text" class="form-control mt-4" name="SubdomainLevel" placeholder="SubdomainLevel">
+                <input type="text" class="form-control mt-4" name="PathLevel" placeholder="PathLevel">
+                <input type="text" class="form-control mt-4" name="UrlLength" placeholder="UrlLength">
+                <input type="text" class="form-control mt-4" name="NumDash" placeholder="NumDash">
+                <input type="text" class="form-control mt-4" name="NumDashInHostname" placeholder="NumDashInHostname">
+                <input type="text" class="form-control mt-4" name="AtSymbol" placeholder="AtSymbol">
+                <input type="text" class="form-control mt-4" name="TildeSymbol" placeholder="TildeSymbol">
+                <input type="text" class="form-control mt-4" name="NumUnderscore" placeholder="NumUnderscore">
+                <input type="text" class="form-control mt-4" name="NumPercent" placeholder="NumPercent">
+                <input type="text" class="form-control mt-4" name="NumQueryComponents" placeholder="NumQueryComponents">
+                <input type="text" class="form-control mt-4" name="NumAmpersand" placeholder="NumAmpersand">
+                <input type="text" class="form-control mt-4" name="NumHash" placeholder="NumHash">
+                <input type="text" class="form-control mt-4" name="NumNumericChars" placeholder="NumNumericChars">
+                <input type="text" class="form-control mt-4" name="NoHttps" placeholder="NoHttps">
+                <input type="text" class="form-control mt-4" name="RandomString" placeholder="RandomString">
+                <input type="text" class="form-control mt-4" name="IpAddress" placeholder="IpAddress">
+                <input type="text" class="form-control mt-4" name="DomainInSubdomains" placeholder="DomainInSubdomains">
+                <input type="text" class="form-control mt-4" name="DomainInPaths" placeholder="DomainInPaths">
+                <input type="text" class="form-control mt-4" name="HttpsInHostname" placeholder="HttpsInHostname">
+                <input type="text" class="form-control mt-4" name="HostnameLength" placeholder="HostnameLength">
+                <input type="text" class="form-control mt-4" name="PathLength" placeholder="PathLength">
+                <input type="text" class="form-control mt-4" name="QueryLength" placeholder="QueryLength">
+                <input type="text" class="form-control mt-4" name="DoubleSlashInPath" placeholder="DoubleSlashInPath">
+                <input type="text" class="form-control mt-4" name="NumSensitiveWords" placeholder="NumSensitiveWords">
+                <input type="text" class="form-control mt-4" name="EmbeddedBrandName" placeholder="EmbeddedBrandName">
+                <input type="text" class="form-control mt-4" name="PctExtHyperlinks" placeholder="PctExtHyperlinks">
+                <input type="text" class="form-control mt-4" name="PctExtResourceUrls" placeholder="PctExtResourceUrls">
+                <input type="text" class="form-control mt-4" name="ExtFavicon" placeholder="ExtFavicon">
+                <input type="text" class="form-control mt-4" name="InsecureForms" placeholder="InsecureForms">
+                <input type="text" class="form-control mt-4" name="RelativeFormAction" placeholder="RelativeFormAction">
+                <input type="text" class="form-control mt-4" name="ExtFormAction" placeholder="ExtFormAction">
+                <input type="text" class="form-control mt-4" name="AbnormalFormAction" placeholder="AbnormalFormAction">
+                <input type="text" class="form-control mt-4" name="PctNullSelfRedirectHyperlinks" placeholder="PctNullSelfRedirectHyperlinks">
+                <input type="text" class="form-control mt-4" name="FrequentDomainNameMismatch" placeholder="FrequentDomainNameMismatch">
+                <input type="text" class="form-control mt-4" name="FakeLinkInStatusBar" placeholder="FakeLinkInStatusBar">
+                <input type="text" class="form-control mt-4" name="RightClickDisabled" placeholder="RightClickDisabled">
+                <input type="text" class="form-control mt-4" name="PopUpWindow" placeholder="PopUpWindow">
+                <input type="text" class="form-control mt-4" name="SubmitInfoToEmail" placeholder="SubmitInfoToEmail">
+                <input type="text" class="form-control mt-4" name="IframeOrFrame" placeholder="IframeOrFrame">
+                <input type="text" class="form-control mt-4" name="MissingTitle" placeholder="MissingTitle">
+                <input type="text" class="form-control mt-4" name="ImagesOnlyInForm" placeholder="ImagesOnlyInForm">
+                <input type="text" class="form-control mt-4" name="SubdomainLevelRT" placeholder="SubdomainLevelRT">
+                <input type="text" class="form-control mt-4" name="UrlLengthRT" placeholder="UrlLengthRT">
+                <input type="text" class="form-control mt-4" name="PctExtResourceUrlsRT" placeholder="PctExtResourceUrlsRT">
+                <input type="text" class="form-control mt-4" name="AbnormalExtFormActionR" placeholder="AbnormalExtFormActionR">
+                <input type="text" class="form-control mt-4" name="ExtMetaScriptLinkRT" placeholder="ExtMetaScriptLinkRT">
+                <input type="text" class="form-control mt-4" name="PctExtNullSelfRedirectHyperlinksRT" placeholder="PctExtNullSelfRedirectHyperlinksRT">              
+                <input type="text" class="form-control mt-4" name="" placeholder="Enter Url Link">              
+                <button class="btn btn-primary btn-blk mt-5">Analyze Link</button>
+              </form>
+            </div>
+            <div class="card-footer bg-primary">
+              <hr>
+              {% if check and check != None %}
+                 <h1 class="text-danger">This link is malicious</h1>
+              {% elif check == False and check != None %}
+                 <h1 class="text-success">This link is not malicious</h1>
+              {% else %}
+                 <h1 class=""></h1>
+              {% endif %}
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
+{% endblock content %}
